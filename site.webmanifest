@@ -1,0 +1,9 @@
+{
+  "name": "Kumral Oto Lastik Market",
+  "short_name": "Kumral Oto Lastik",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f7f8",
+  "theme_color": "#1c1c1e",
+  "lang": "tr"
+}

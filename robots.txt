@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kumralotolastikmarket.com.tr/sitemap.xml
