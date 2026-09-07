@@ -188,6 +188,7 @@ function page(b) {
         </div>
       </li>
       <li><a href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
+      <li><a href="lastik-tamiri.html">Lastik Tamiri</a></li>
       <li><a href="sss.html">S.S.S.</a></li>
       <li><a href="iletisim.html">İletişim</a></li>
     </ul>
@@ -262,6 +263,7 @@ ${typesList}
           <li><a href="index.html">Anasayfa</a></li>
           <li><a href="hakkimizda.html">Hakkımızda</a></li>
           <li><a href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
+          <li><a href="lastik-tamiri.html">Lastik Tamiri</a></li>
           <li><a href="sss.html">Sıkça Sorulan Sorular</a></li>
           <li><a href="iletisim.html">İletişim</a></li>
         </ul>

@@ -56,6 +56,7 @@ ${dropdownHtml("")}
         </div>
       </li>
       <li><a href="hizmetlerimiz.html"${slug === "hizmetlerimiz" ? ' class="active"' : ""}>Hizmetlerimiz</a></li>
+      <li><a href="lastik-tamiri.html"${slug === "lastik-tamiri" ? ' class="active"' : ""}>Lastik Tamiri</a></li>
       <li><a href="sss.html"${slug === "sss" ? ' class="active"' : ""}>S.S.S.</a></li>
       <li><a href="iletisim.html"${slug === "iletisim" ? ' class="active"' : ""}>İletişim</a></li>
     </ul>
@@ -94,6 +95,7 @@ ${body}
           <li><a href="index.html">Anasayfa</a></li>
           <li><a href="hakkimizda.html">Hakkımızda</a></li>
           <li><a href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
+          <li><a href="lastik-tamiri.html">Lastik Tamiri</a></li>
           <li><a href="sss.html">Sıkça Sorulan Sorular</a></li>
           <li><a href="iletisim.html">İletişim</a></li>
         </ul>
@@ -232,6 +234,61 @@ writeFileSync(
   "utf8"
 );
 console.log("yazıldı: hizmetlerimiz.html");
+
+/* ===================== LASTİK TAMİRİ ===================== */
+writeFileSync(
+  "lastik-tamiri.html",
+  shell({
+    slug: "lastik-tamiri",
+    title: "Lastik Tamiri",
+    desc: "Aydın'da lastik tamiri: delik/çivi yaması, supap değişimi ve yan duvar hasarı kontrolü. Kumral Oto Lastik Market'te güvenli ve kalıcı tamir.",
+    breadcrumb: "Lastik Tamiri",
+    heroTitle: "Lastik Tamiri",
+    heroDesc: "Her delik değişim gerektirmez. Uygun onarım koşullarında lastiğinizi güvenle yola çıkarıyoruz.",
+    body: `<section class="content"><div class="container content-grid">
+      <div class="prose reveal">
+        <p class="lead">Lastiğinizde çivi, vida veya küçük bir kesik mi var? Uygun konum ve boyuttaki hasarlarda, lastiği değiştirmeden önce doğru yöntemle tamir ettirmek hem daha ekonomik hem de çevreye daha duyarlı bir çözümdür.</p>
+        <h2>Sunduğumuz Tamir Hizmetleri</h2>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Delik/Çivi Yaması (mantar yama - iç yama tekniği)</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Supap (Valf) Değişimi</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Yan Duvar Hasarı Değerlendirmesi</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Tamir Sonrası Balans Kontrolü</span></li>
+        </ul>
+        <h2>Doğru Tamir Yöntemi: Mantar Yama</h2>
+        <p>Sırt bölgesindeki uygun boyuttaki delikleri, hem içten hem dıştan kapatan mantar yama (iç yama) yöntemiyle onarıyoruz. Sadece dıştan yapılan geçici yamalar zamanla hava kaçırabileceği için tercih etmiyoruz.</p>
+        <h2>Ne Zaman Tamir, Ne Zaman Değişim?</h2>
+        <p>Sırt bölgesindeki küçük çaplı delikler genellikle güvenle tamir edilebilir. Ancak yan duvardaki hasarlar, çok büyük kesikler veya daha önce birden fazla kez tamir edilmiş lastiklerde, güvenliğiniz için tamir yerine değişim öneriyoruz.</p>
+        <h3>Neden Bu Kadar Titiziz?</h3>
+        <p>Lastik, aracınızın yolla tek temas noktasıdır. Uygun olmayan bir tamir, ilerleyen zamanda ani hava kaybına yol açabilir. Bu yüzden her tamir talebini önce yerinde inceliyor, uygun değilse dürüstçe değişim öneriyoruz.</p>
+        <div class="note-box"><b>Hızlı Kontrol İçin Gelin:</b> Lastiğinizi mağazamıza getirin, tamir edilebilir olup olmadığını ücretsiz kontrol edelim. <a href="tel:${PHONE_TEL}" style="color:var(--orange-dark);font-weight:700">${PHONE_DISPLAY}</a></div>
+      </div>
+      <aside class="sidebar">
+        <div class="side-card"><h4>Tüm Markalar</h4><ul class="side-links">${navHtml("")}</ul></div>
+        <div class="side-card side-cta">
+          <h4>Lastiğiniz Tamir Edilebilir mi?</h4>
+          <p>Fotoğrafını gönderin veya mağazamıza uğrayın, hemen değerlendirelim.</p>
+          <span class="ph">${PHONE_DISPLAY}</span>
+          <a href="tel:${PHONE_TEL}" class="btn btn-primary btn-block">Hemen Ara</a>
+          <a href="https://wa.me/${WA}" target="_blank" rel="noopener" class="btn btn-wa btn-block" style="margin-top:10px">${WA_ICON} WhatsApp</a>
+        </div>
+        <div class="side-card">
+          <h4>Adres</h4>
+          <p class="muted" style="font-size:.92rem;margin:0">Efeler / Aydın merkezli mağazamızdan hizmet veriyoruz.</p>
+        </div>
+      </aside>
+    </div></section>
+<div class="container" style="padding-bottom:80px"><div class="cta-band reveal">
+  <div><h2>Lastiğiniz mi Delindi?</h2><p>Değişime gerek kalmadan tamir edilip edilemeyeceğini hemen öğrenin.</p></div>
+  <div class="acts">
+    <a href="tel:${PHONE_TEL}" class="btn btn-primary btn-lg">${PHONE_DISPLAY}</a>
+    <a href="https://wa.me/${WA}" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">WhatsApp'tan Yaz</a>
+  </div>
+</div></div>`,
+  }),
+  "utf8"
+);
+console.log("yazıldı: lastik-tamiri.html");
 
 /* ===================== HAKKIMIZDA ===================== */
 writeFileSync(
