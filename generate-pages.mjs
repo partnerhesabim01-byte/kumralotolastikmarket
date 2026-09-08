@@ -1,7 +1,7 @@
 // Kurumsal/statik sayfaları üretir: markalar, hakkımızda, hizmetlerimiz, iletişim, sss, yasal.
 // Çalıştırma: node generate-pages.mjs
 import { writeFileSync } from "node:fs";
-import { BRANDS, navHtml, WA_ICON, TEL_ICON, PIN_ICON, TIRE_ICON, PHONE_DISPLAY, PHONE_TEL, WA, DOMAIN, BRAND_NAME, FAVICON } from "./generate-brands.mjs";
+import { BRANDS, BRAND_ASSETS, navHtml, WA_ICON, TEL_ICON, PIN_ICON, TIRE_ICON, PHONE_DISPLAY, PHONE_TEL, WA, DOMAIN, BRAND_NAME, FAVICON } from "./generate-brands.mjs";
 
 function dropdownHtml(currentSlug) {
   return BRANDS.map(
@@ -41,10 +41,7 @@ function shell({ slug, title, desc, breadcrumb, heroTitle, heroDesc, body }) {
 <header class="header">
   <div class="container nav">
     <a href="index.html" class="logo" aria-label="${BRAND_NAME} ana sayfa">
-      <span style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.3rem;color:#1c1c1e">
-        <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#d61f26" stroke-width="2">${TIRE_ICON}</svg>
-        Kumral <span style="color:#d61f26">Oto Lastik</span>
-      </span>
+      <img src="img/logo.avif" alt="${BRAND_NAME}" width="480" height="140">
     </a>
     <ul class="menu">
       <li><a href="index.html">Anasayfa</a></li>
@@ -57,6 +54,7 @@ ${dropdownHtml("")}
       </li>
       <li><a href="hizmetlerimiz.html"${slug === "hizmetlerimiz" ? ' class="active"' : ""}>Hizmetlerimiz</a></li>
       <li><a href="lastik-tamiri.html"${slug === "lastik-tamiri" ? ' class="active"' : ""}>Lastik Tamiri</a></li>
+      <li><a href="blog.html"${slug === "blog" ? ' class="active"' : ""}>Blog</a></li>
       <li><a href="sss.html"${slug === "sss" ? ' class="active"' : ""}>S.S.S.</a></li>
       <li><a href="iletisim.html"${slug === "iletisim" ? ' class="active"' : ""}>İletişim</a></li>
     </ul>
@@ -96,6 +94,7 @@ ${body}
           <li><a href="hakkimizda.html">Hakkımızda</a></li>
           <li><a href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
           <li><a href="lastik-tamiri.html">Lastik Tamiri</a></li>
+          <li><a href="blog.html">Blog</a></li>
           <li><a href="sss.html">Sıkça Sorulan Sorular</a></li>
           <li><a href="iletisim.html">İletişim</a></li>
         </ul>
@@ -147,13 +146,17 @@ ${body}
 }
 
 /* ===================== MARKALAR ===================== */
-const brandGrid = BRANDS.map(
-  (b) => `      <a href="${b.slug}.html" class="brand-card reveal">
-        <div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></div>
+const brandGrid = BRANDS.map((b) => {
+  const hasLogo = BRAND_ASSETS[b.slug]?.logo;
+  const bi = hasLogo
+    ? `<div class="bi bi-logo"><img src="img/logos/${b.slug}.avif" alt="${b.name} logo" loading="lazy"></div>`
+    : `<div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></div>`;
+  return `      <a href="${b.slug}.html" class="brand-card reveal">
+        ${bi}
         <h3>${b.name}</h3><p>${b.tag}</p>
         <span class="serv-link">Detaylı Bilgi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-      </a>`
-).join("\n");
+      </a>`;
+}).join("\n");
 
 writeFileSync(
   "markalar.html",
@@ -450,3 +453,5 @@ legalPage("cerez-politikasi", "Çerez Politikası", [
   ["Çerez Türleri", ["Zorunlu çerezler sitenin temel işlevlerini (menü, form gönderimi) çalıştırmak için kullanılır. Tercihe bağlı çerezler ise yalnızca onayınız halinde, ziyaret istatistiklerini ölçmek için kullanılabilir."]],
   ["Tercihlerinizi Yönetme", ["Site ilk ziyaretinizde açılan çerez onay bandından tercihlerinizi 'Kabul Et' veya 'Reddet' seçenekleriyle belirleyebilir, tarayıcı ayarlarınızdan çerezleri istediğiniz zaman silebilirsiniz."]],
 ]);
+
+export { shell };

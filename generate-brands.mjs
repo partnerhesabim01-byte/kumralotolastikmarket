@@ -11,6 +11,24 @@ const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' vi
 
 const TIRE_ICON = '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M21 12h-2M5 12H3M18.4 5.6l-1.4 1.4M7 16l-1.4 1.4M18.4 18.4L17 17M7 8L5.6 5.6"/>';
 
+// Müşterinin img/ klasörüne eklediği marka logoları + lastik fotoğrafları,
+// AVIF'e çevrilip img/logos/<slug>.avif ve img/tires/<slug>.avif olarak
+// kaydedildi (bkz. _convert_images.mjs). Lassa ve Milestone için logo
+// sağlanmadı — o markalarda .bi rozeti eski jenerik SVG ikonunu korur.
+const BRAND_ASSETS = {
+  petlas: { logo: [320, 104], tire: [500, 500] },
+  lassa: { logo: [320, 71], tire: [620, 857] },
+  bridgestone: { logo: [320, 49], tire: [320, 320] },
+  goodyear: { logo: [320, 84], tire: [620, 620] },
+  milestone: { logo: [320, 90], tire: [345, 499] },
+  continental: { logo: [320, 70], tire: [320, 320] },
+  hankook: { logo: [320, 67], tire: [620, 717] },
+  kumho: { logo: [320, 115], tire: [357, 500] },
+  falken: { logo: [320, 94], tire: [368, 500] },
+  dunlop: { logo: [320, 84], tire: [343, 500] },
+  laufen: { logo: [320, 58], tire: [620, 325] },
+};
+
 const BRANDS = [
   {
     slug: "petlas",
@@ -135,6 +153,53 @@ const WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 
 const TEL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.4 2.1L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c1 .3 1.9.6 2.9.7A2 2 0 0122 16.9z"/></svg>';
 const PIN_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>';
 
+// Sık aranan lastik ebatları — tüm marka sayfalarında ortak gösterilir (gerçek
+// stok/fiyat verisi olmadığı için marka bazında değil, mağazanın genel olarak
+// çalıştığı ebat aralığı olarak sunulur; müşteri aramadan tam ebat/stok teyidi
+// yapılır — bkz. not-box).
+const TIRE_SIZES = [
+  "175/65 R14", "185/65 R15", "195/65 R15", "205/55 R16",
+  "205/60 R16", "215/60 R16", "215/55 R17", "225/45 R17",
+  "225/50 R17", "235/55 R18", "245/45 R18", "255/35 R19",
+];
+function sizeGridHtml() {
+  return TIRE_SIZES.map((s) => `<span class="size-chip">${s}</span>`).join("\n          ");
+}
+
+function joinTr(list) {
+  const low = list.map((t) => t.toLocaleLowerCase("tr"));
+  if (low.length <= 1) return low.join("");
+  return low.slice(0, -1).join(", ") + " ve " + low[low.length - 1];
+}
+
+// Yerel SEO makalesi (300+ kelime hedefi): "aydın {marka} bayii",
+// "efeler {marka} bayii", "{marka} lastik fiyatları" gibi aramalarda
+// çıkabilmesi için doğal, okunabilir uzun metin — fiyat rakamı YAZILMAZ,
+// yerine "hemen fiyat alın" gibi genel çağrı cümleleri kullanılır (kullanıcı
+// talebi). Her markada name/origin/tag/types farklı olduğu için sayfalar
+// birbirinin birebir kopyası olmuyor (duplicate content riski azaltılır).
+function seoArticleHtml(b) {
+  const typesJoined = joinTr(b.types);
+  const tagLower = b.tag.charAt(0).toLocaleLowerCase("tr") + b.tag.slice(1);
+  return `
+        <h2>Aydın'da ${b.name} Bayii Arıyorsanız</h2>
+        <p>Aydın'da ${b.name} lastik arayan sürücüler için Efeler merkezli mağazamız güvenilir bir ${b.name} bayii noktasıdır. ${b.origin} kökenli ${b.name}, ${tagLower}. Mağazamızda ${b.name} markasının ${typesJoined} seçeneklerini bulabilir, aracınızın modeline ve kullanım alışkanlığınıza en uygun ebadı birlikte belirleyebiliriz. Aydın ve Efeler'de ${b.name} bayii arayışınızda hem doğru ürün seçimi hem de doğru montaj için tek adrestesiniz — lastik değişiminin ardından balans ve rot ayarını da aynı ziyarette, ek bir randevuya gerek kalmadan tamamlıyoruz.</p>
+        <h3>${b.name} Lastik Fiyatları İçin Hemen Arayın</h3>
+        <p>${b.name} lastik fiyatları; model, ebat ve sezona göre değişiklik gösterdiği için güncel tutarı sitede paylaşmak yerine telefonla anında bilgi veriyoruz. Aracınızın plaka veya ebat bilgisini ilettiğinizde, size özel ${b.name} fiyat teklifini birkaç dakika içinde alabilirsiniz. Efeler ve Aydın genelinden gelen müşterilerimiz, ${b.name} bayii ağında ürünün orijinalliğinden ve garanti kapsamından emin olarak alışveriş yapıyor. Fiyatı öğrenmek için beklemenize gerek yok — şimdi arayın, ${b.name} modelleriniz için hızlıca fiyat alın ve randevunuzu bugün planlayın.</p>`;
+}
+
+function brandMediaHtml(slug, name) {
+  const a = BRAND_ASSETS[slug];
+  if (!a) return "";
+  const logoImg = a.logo
+    ? `<img src="img/logos/${slug}.avif" alt="${name} logo" class="logo-photo" width="${a.logo[0]}" height="${a.logo[1]}" loading="lazy">`
+    : "";
+  return `<div class="brand-media${a.logo ? "" : " no-logo"}">
+          <img src="img/tires/${slug}.avif" alt="${name} lastik modeli" class="tire-photo" width="${a.tire[0]}" height="${a.tire[1]}" loading="lazy">
+          ${logoImg}
+        </div>`;
+}
+
 function page(b) {
   const typesList = b.types
     .map(
@@ -150,7 +215,7 @@ function page(b) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${b.name} Lastik Fiyatları ve Modelleri | ${BRAND_NAME} - Aydın</title>
 <meta name="description" content="Aydın'da ${b.name} lastik satışı. ${b.tag}. ${BRAND_NAME}'te ${b.name} yaz, kış ve 4 mevsim lastik modelleri için bilgi alın.">
-<meta name="keywords" content="aydın ${b.name.toLowerCase()} lastik, ${b.name.toLowerCase()} lastik bayi aydın, ${b.name.toLowerCase()} lastik fiyatları, kumral oto lastik market">
+<meta name="keywords" content="aydın ${b.name.toLowerCase()} bayii, efeler ${b.name.toLowerCase()} bayii, ${b.name.toLowerCase()} lastik fiyatları, aydın ${b.name.toLowerCase()} lastik, ${b.name.toLowerCase()} lastik bayi aydın, kumral oto lastik market">
 <meta name="author" content="${BRAND_NAME}">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#1c1c1e">
@@ -173,10 +238,7 @@ function page(b) {
 <header class="header">
   <div class="container nav">
     <a href="index.html" class="logo" aria-label="${BRAND_NAME} ana sayfa">
-      <span style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.25rem;color:#1c1c1e">
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#d61f26" stroke-width="2">${TIRE_ICON}</svg>
-        Kumral <span style="color:#d61f26">Oto Lastik</span>
-      </span>
+      <img src="img/logo.avif" alt="${BRAND_NAME}" width="480" height="140">
     </a>
     <ul class="menu">
       <li><a href="index.html">Anasayfa</a></li>
@@ -189,6 +251,7 @@ function page(b) {
       </li>
       <li><a href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
       <li><a href="lastik-tamiri.html">Lastik Tamiri</a></li>
+      <li><a href="blog.html">Blog</a></li>
       <li><a href="sss.html">S.S.S.</a></li>
       <li><a href="iletisim.html">İletişim</a></li>
     </ul>
@@ -209,16 +272,24 @@ function page(b) {
 <section class="content"><div class="container content-grid">
       <div class="prose reveal">
         <p class="lead">${b.lead}</p>
+        ${brandMediaHtml(b.slug, b.name)}
         <h2>${b.name} Lastik Seçeneklerimiz</h2>
         <ul class="ticks">
 ${typesList}
         </ul>
+        <h2>${b.name} Lastik Ebatları</h2>
+        <p>Mağazamızda ${b.name} markasında en çok tercih edilen ebatlar stoklu bulunur; listede görmediğiniz bir ebat için de arayarak temin durumunu öğrenebilirsiniz.</p>
+        <div class="size-grid">
+          ${sizeGridHtml()}
+        </div>
+        <p class="muted" style="font-size:.85rem;margin-top:10px">Ebat listesi genel stok aralığımızı gösterir, ${b.name} için güncel model/stok bilgisini lütfen arayarak öğrenin.</p>
         <h2>Neden ${b.name}?</h2>
         <p>${b.why}</p>
         <h3>Menşei</h3>
         <p>${b.name}, ${b.origin} kökenli bir markadır.</p>
         <h3>Montaj ve Ek Hizmetler</h3>
         <p>${b.name} lastik alımınızla birlikte balans ayarı, rot ayarı ve eski lastik teslim/depolama hizmetlerimizden de faydalanabilirsiniz.</p>
+        ${seoArticleHtml(b)}
         <div class="note-box"><b>Güncel Stok ve Fiyat İçin Arayın:</b> Ebat ve araç bilginizi iletin, size uygun ${b.name} modelini ve güncel fiyatı hemen bildirelim. <a href="tel:${PHONE_TEL}" style="color:var(--orange-dark);font-weight:700">${PHONE_DISPLAY}</a></div>
       </div>
       <aside class="sidebar">
@@ -264,6 +335,7 @@ ${typesList}
           <li><a href="hakkimizda.html">Hakkımızda</a></li>
           <li><a href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
           <li><a href="lastik-tamiri.html">Lastik Tamiri</a></li>
+          <li><a href="blog.html">Blog</a></li>
           <li><a href="sss.html">Sıkça Sorulan Sorular</a></li>
           <li><a href="iletisim.html">İletişim</a></li>
         </ul>
@@ -318,4 +390,4 @@ for (const b of BRANDS) {
   console.log(`yazıldı: ${b.slug}.html`);
 }
 
-export { BRANDS, navHtml, footerBrandLinks, dropdownHtml, WA_ICON, TEL_ICON, PIN_ICON, TIRE_ICON, PHONE_DISPLAY, PHONE_TEL, WA, DOMAIN, BRAND_NAME, FAVICON };
+export { BRANDS, BRAND_ASSETS, navHtml, footerBrandLinks, dropdownHtml, WA_ICON, TEL_ICON, PIN_ICON, TIRE_ICON, PHONE_DISPLAY, PHONE_TEL, WA, DOMAIN, BRAND_NAME, FAVICON };

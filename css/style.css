@@ -138,6 +138,13 @@ section{position:relative}
   border:60px solid rgba(255,255,255,.03);pointer-events:none}
 .hero .container{position:relative;z-index:1}
 .hero-inner{max-width:720px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.hero-grid .hero-inner{max-width:none}
+.hero-photo img{width:100%;height:auto;border-radius:var(--radius);box-shadow:var(--shadow-lg);display:block}
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-photo{order:-1;max-width:340px;margin:0 auto}
+}
 .hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(214,31,38,.16);
   border:1px solid rgba(214,31,38,.4);padding:9px 20px;border-radius:50px;font-size:.86rem;font-weight:600;margin-bottom:24px;color:#ff9b9e}
 .hero-badge .dot{width:9px;height:9px;background:var(--green);border-radius:50%;box-shadow:0 0 0 4px rgba(37,211,102,.3)}
@@ -169,6 +176,20 @@ section{position:relative}
 .brand-card:hover .bi{background:var(--orange);color:#fff}
 .brand-card .bi svg{width:30px;height:30px;color:var(--navy);transition:var(--t)}
 .brand-card:hover .bi svg{color:#fff}
+/* Logolu markalarda daire yerine geniş dikdörtgen rozet — wordmark logolar
+   64px yuvarlağa sıkışınca okunaksızlaşıyordu. */
+.brand-card .bi.bi-logo{width:100%;max-width:168px;height:64px;border-radius:12px;
+  background:#fff;border:1px solid var(--line)}
+.brand-card:hover .bi.bi-logo{background:#fff;border-color:var(--orange)}
+.brand-card .bi.bi-logo img{width:100%;height:100%;object-fit:contain;padding:8px 12px}
+
+/* Marka sayfalarında lastik ebatları grid'i */
+.size-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 8px}
+.size-chip{display:flex;align-items:center;justify-content:center;padding:12px 10px;
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius-sm);
+  font-weight:700;font-size:.94rem;color:var(--navy);transition:var(--t);text-align:center}
+.size-chip:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+@media(max-width:520px){.size-grid{grid-template-columns:repeat(2,1fr)}}
 .brand-card h3{font-size:1.1rem;margin-bottom:8px}
 .brand-card p{color:var(--text-soft);font-size:.88rem;margin-bottom:14px}
 .brand-card .serv-link{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--orange-dark);font-size:.88rem}
@@ -195,6 +216,7 @@ section{position:relative}
 .why-visual::after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;
   border:14px dashed rgba(214,31,38,.5)}
 .why-visual svg{position:relative;width:90px;height:90px;color:var(--orange)}
+.why-visual img{position:relative;width:100%;height:100%;object-fit:cover;display:block}
 .why-badge{position:absolute;right:-22px;bottom:-22px;background:#fff;
   color:var(--navy);padding:22px 28px;border-radius:16px;box-shadow:var(--shadow-lg);text-align:center}
 .why-badge b{font-size:2.2rem;display:block;color:var(--orange-dark);line-height:1}
@@ -221,6 +243,15 @@ section{position:relative}
   background:repeating-linear-gradient(90deg,var(--orange) 0 6px,transparent 6px 11px)}
 
 /* ---------- CTA band ---------- */
+.brand-promo{display:grid;grid-template-columns:.9fr 1.1fr;background:var(--navy);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow-lg);margin-top:50px}
+.brand-promo img{width:100%;height:100%;object-fit:cover;display:block;min-height:260px}
+.brand-promo-text{padding:40px 44px;display:flex;flex-direction:column;justify-content:center}
+.brand-promo-text h2{color:#fff;font-size:clamp(1.5rem,3vw,2.1rem);margin:10px 0 14px}
+.brand-promo-text p{color:#d6d6d9;margin-bottom:22px}
+.brand-promo-text .acts{display:flex;gap:14px;flex-wrap:wrap}
+@media(max-width:760px){.brand-promo{grid-template-columns:1fr}.brand-promo img{min-height:220px}}
+
 .cta-band{background:linear-gradient(120deg,var(--navy-deep),var(--navy) 60%,var(--orange-dark));
   color:#fff;border-radius:24px;padding:60px 50px;display:flex;align-items:center;
   justify-content:space-between;gap:36px;flex-wrap:wrap;box-shadow:var(--shadow-lg)}
@@ -273,6 +304,15 @@ section{position:relative}
 .note-box{background:rgba(214,31,38,.06);border-left:4px solid var(--orange);
   padding:20px 24px;border-radius:0 12px 12px 0;margin:26px 0}
 .note-box b{color:var(--navy)}
+
+.brand-media{display:flex;align-items:center;gap:28px;background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius);padding:24px 28px;margin-bottom:28px;box-shadow:var(--shadow)}
+.brand-media .tire-photo{width:150px;height:auto;flex-shrink:0}
+.brand-media .logo-photo{max-width:240px;max-height:80px;width:auto;height:auto}
+.brand-media.no-logo{gap:0}
+@media(max-width:640px){.brand-media{flex-direction:column;text-align:center;gap:16px}}
+
+.brand-card .bi img{width:100%;height:100%;object-fit:contain;padding:8px}
 
 .sidebar{position:sticky;top:100px;display:grid;gap:22px}
 .side-card{background:#fff;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);border:1px solid var(--line)}
@@ -403,7 +443,7 @@ section{position:relative}
   .sidebar{position:static}
   .why-visual{height:340px}
 }
-@media(max-width:860px){
+@media(max-width:1180px){
   .menu{position:fixed;top:0;right:-100%;width:84%;max-width:340px;height:100vh;
     background:#fff;flex-direction:column;align-items:stretch;padding:90px 22px 30px;
     gap:4px;box-shadow:-12px 0 40px rgba(0,0,0,.18);transition:right .35s ease;overflow-y:auto;z-index:899}
