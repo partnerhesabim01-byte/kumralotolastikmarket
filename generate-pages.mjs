@@ -16,6 +16,13 @@ function shell({ slug, title, desc, breadcrumb, heroTitle, heroDesc, body }) {
   return `<!DOCTYPE html>
 <html lang="tr">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KPKM5C63');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title} | ${BRAND_NAME}</title>
@@ -38,6 +45,10 @@ function shell({ slug, title, desc, breadcrumb, heroTitle, heroDesc, body }) {
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KPKM5C63"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <header class="header">
   <div class="container nav">
     <a href="index.html" class="logo" aria-label="${BRAND_NAME} ana sayfa">
@@ -108,7 +119,7 @@ ${body}
       <div>
         <h4>İletişim</h4>
         <ul class="f-contact">
-          <li>${PIN_ICON}<span>Efeler / Aydın (açık adres eklenecek)</span></li>
+          <li>${PIN_ICON}<span>Ata Mah. 738. Sokak No:18/A, 09000 Efeler/Aydın</span></li>
           <li>${TEL_ICON}<a href="tel:${PHONE_TEL}">${PHONE_DISPLAY}</a></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Pazartesi - Cumartesi 08:30 - 19:00</span></li>
         </ul>
@@ -277,7 +288,7 @@ writeFileSync(
         </div>
         <div class="side-card">
           <h4>Adres</h4>
-          <p class="muted" style="font-size:.92rem;margin:0">Efeler / Aydın merkezli mağazamızdan hizmet veriyoruz.</p>
+          <p class="muted" style="font-size:.92rem;margin:0">Ata Mah. 738. Sokak No:18/A, 09000 Efeler/Aydın</p>
         </div>
       </aside>
     </div></section>
@@ -346,12 +357,12 @@ writeFileSync(
     heroDesc: "Sorularınız ve randevu talepleriniz için bize ulaşın.",
     body: `<section class="sec"><div class="container cnt-grid">
       <div class="cnt-cards reveal">
-        <div class="cnt-card"><div class="ci">${PIN_ICON.replace("currentColor", "#fff")}</div><div><h4>Adres</h4><p>Efeler / Aydın (açık adres eklenecek)</p></div></div>
+        <div class="cnt-card"><div class="ci">${PIN_ICON.replace("currentColor", "#fff")}</div><div><h4>Adres</h4><p>Ata Mah. 738. Sokak No:18/A, 09000 Efeler/Aydın</p></div></div>
         <div class="cnt-card"><div class="ci">${TEL_ICON.replace("currentColor", "#fff")}</div><div><h4>Telefon</h4><a href="tel:${PHONE_TEL}">${PHONE_DISPLAY}</a></div></div>
         <div class="cnt-card"><div class="ci">${WA_ICON}</div><div><h4>WhatsApp</h4><a href="https://wa.me/${WA}" target="_blank" rel="noopener">${PHONE_DISPLAY}</a></div></div>
         <div class="cnt-card"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><h4>Çalışma Saatleri</h4><p>Pazartesi - Cumartesi 08:30 - 19:00</p></div></div>
       </div>
-      <div class="map-wrap reveal"><iframe src="https://maps.google.com/maps?q=Efeler,%20Ayd%C4%B1n&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Kumral Oto Lastik Market konum haritası"></iframe></div>
+      <div class="map-wrap reveal"><iframe src="https://maps.google.com/maps?q=${encodeURIComponent("Ata Mah. 738. Sokak No:18/A, 09000 Efeler/Aydın")}&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Kumral Oto Lastik Market konum haritası"></iframe></div>
     </div></section>
 <section class="sec quote" style="padding-top:0" id="teklif">
   <div class="container quote-wrap">
@@ -395,7 +406,7 @@ const faqs = [
   ["Randevu almam gerekiyor mu?", "Bekleme yapmadan hizmet alabilmeniz için önceden arayıp randevu oluşturmanızı öneririz."],
   ["Hangi ebatlarda lastik buluyorsunuz?", "Ruhsatınızdaki ebat bilgisini paylaşın, stoktaki uygun marka ve modelleri birlikte değerlendirelim."],
   ["Ticari araç lastiği satıyor musunuz?", "Evet, seçili markalarda hafif ticari araç lastiği seçeneklerimiz de mevcuttur."],
-  ["Mağazanız nerede?", "Efeler / Aydın merkezli mağazamızdan hizmet veriyoruz; açık adres bilgimiz yakında eklenecektir, o zamana kadar telefon veya WhatsApp üzerinden konum paylaşabiliriz."],
+  ["Mağazanız nerede?", "Ata Mah. 738. Sokak No:18/A, 09000 Efeler/Aydın adresinde hizmet veriyoruz. Telefon veya WhatsApp üzerinden de konum paylaşabiliriz."],
 ];
 const faqHtml = faqs.map(([q, a]) => `      <div class="faq-item">
         <button class="faq-q" type="button">${q}<span class="pm">+</span></button>

@@ -211,6 +211,13 @@ function page(b) {
   return `<!DOCTYPE html>
 <html lang="tr">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KPKM5C63');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${b.name} Lastik Fiyatları ve Modelleri | ${BRAND_NAME} - Aydın</title>
@@ -232,9 +239,13 @@ function page(b) {
 <link rel="preload" href="fonts/poppins-latin-ext-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/poppins-latin-ext-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"AutoPartsStore","name":"${BRAND_NAME}","telephone":"${PHONE_TEL}","url":"${DOMAIN}/${b.slug}.html","address":{"@type":"PostalAddress","addressLocality":"Efeler","addressRegion":"Aydın","addressCountry":"TR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"AutoPartsStore","name":"${BRAND_NAME}","telephone":"${PHONE_TEL}","url":"${DOMAIN}/${b.slug}.html","address":{"@type":"PostalAddress","streetAddress":"Ata Mahallesi, 738. Sokak No:18/A","addressLocality":"Efeler","addressRegion":"Aydın","postalCode":"09000","addressCountry":"TR"}}</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KPKM5C63"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <header class="header">
   <div class="container nav">
     <a href="index.html" class="logo" aria-label="${BRAND_NAME} ana sayfa">
@@ -303,7 +314,7 @@ ${typesList}
         </div>
         <div class="side-card">
           <h4>Adres</h4>
-          <p class="muted" style="font-size:.92rem;margin:0">Efeler / Aydın merkezli mağazamızdan hizmet veriyoruz.</p>
+          <p class="muted" style="font-size:.92rem;margin:0">Ata Mah. 738. Sokak No:18/A, 09000 Efeler/Aydın</p>
         </div>
       </aside>
     </div></section>
@@ -349,7 +360,7 @@ ${typesList}
       <div>
         <h4>İletişim</h4>
         <ul class="f-contact">
-          <li>${PIN_ICON}<span>Efeler / Aydın (açık adres eklenecek)</span></li>
+          <li>${PIN_ICON}<span>Ata Mah. 738. Sokak No:18/A, 09000 Efeler/Aydın</span></li>
           <li>${TEL_ICON}<a href="tel:${PHONE_TEL}">${PHONE_DISPLAY}</a></li>
         </ul>
         <a href="iletisim.html" class="btn btn-primary" style="margin-top:8px">Bilgi Al</a>
