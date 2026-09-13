@@ -19,7 +19,7 @@ const ARTICLES = [
         <h2>Şeffaf ve Hızlı Hizmet</h2>
         <p>Güvenilir bir lastikçi, aracınızdaki sorunu size açıkça anlatır; lastiğin gerçekten değişmesi mi gerektiğini yoksa basit bir tamirle mi devam edilebileceğini dürüstçe söyler. Efeler ve çevresinde hizmet veren işletmelerin çoğu benzer hizmetleri sunsa da, işlemin ne kadar sürdüğü ve randevu almanın ne kadar kolay olduğu da önemli bir fark yaratır. Ani bir patlak veya çivi batması gibi acil durumlarda aynı gün içinde işleminizi tamamlayabilen bir servis tercih etmeniz, zaman kaybını en aza indirir.</p>
         <h2>Marka Çeşitliliği Önemli</h2>
-        <p>Aracınızın markasına ve kullanım şeklinize uygun lastik önerebilen, geniş bir marka yelpazesiyle çalışan bir tamirci; sizi tek bir markaya mahkum etmez. Petlas, Lassa, Bridgestone, Goodyear, Continental, Hankook, Kumho, Falken, Dunlop, Milestone ve Laufen gibi farklı bütçe ve performans segmentlerinden markalarla çalışan bir işletme, ihtiyacınıza en uygun seçeneği sunma şansına sahiptir.</p>
+        <p>Aracınızın markasına ve kullanım şeklinize uygun lastik önerebilen, geniş bir marka yelpazesiyle çalışan bir tamirci; sizi tek bir markaya mahkum etmez. Petlas, Lassa, Bridgestone, Goodyear, Continental, Hankook, Kumho, Falken, Dunlop, Milestone ve Laufenn gibi farklı bütçe ve performans segmentlerinden markalarla çalışan bir işletme, ihtiyacınıza en uygun seçeneği sunma şansına sahiptir.</p>
         <h2>Montaj Sonrası Hizmetler</h2>
         <p>Lastik değişiminin ardından balans ve rot ayarının aynı ziyarette yapılabilmesi, hem zamandan tasarruf sağlar hem de yeni lastiklerinizin düzgün oturmasını garanti altına alır. Ayrıca eski lastiklerinizin teslim alınması veya depolanması gibi ek hizmetler sunan bir işletme tercih etmek, işinizi daha da kolaylaştırır.</p>
         <h2>Sonuç</h2>
@@ -61,7 +61,7 @@ const ARTICLES = [
         <h2>Kullanım Alışkanlığınız</h2>
         <p>Şehir içi kısa mesafe kullanımı ile uzun yol/otoyol ağırlıklı kullanım, farklı lastik özellikleri gerektirir. Sportif sürüş tarzına sahipseniz viraj performansı öne çıkan modelleri, konforlu ve sessiz bir sürüş istiyorsanız bu yönde öne çıkan modelleri tercih edebilirsiniz. Mağazamızda bu tercihlerinize göre size en uygun markayı önerebiliyoruz.</p>
         <h2>Marka ve Bütçe Dengesi</h2>
-        <p>Premium markalar (Continental, Bridgestone, Goodyear, Hankook gibi) üst düzey teknoloji ve uzun ömür sunarken, Petlas ve Lassa gibi yerli üretim markalar uygun fiyat/performans dengesi arayanlar için iyi bir seçenektir. Milestone ve Laufen gibi ekonomik segment markalar ise bütçe dostu bir alternatif sağlar. Önemli olan, bütçenizle beklentinizi dengeleyen markayı bulmaktır.</p>
+        <p>Premium markalar (Continental, Bridgestone, Goodyear, Hankook gibi) üst düzey teknoloji ve uzun ömür sunarken, Petlas ve Lassa gibi yerli üretim markalar uygun fiyat/performans dengesi arayanlar için iyi bir seçenektir. Milestone ve Laufenn gibi ekonomik segment markalar ise bütçe dostu bir alternatif sağlar. Önemli olan, bütçenizle beklentinizi dengeleyen markayı bulmaktır.</p>
         <h2>Yakıt Verimliliği ve Gürültü</h2>
         <p>Avrupa lastik etiketinde yer alan yakıt verimliliği, ıslak zemin tutuşu ve gürültü seviyesi bilgileri, satın alma kararınızda size yol gösterebilir. Düşük yuvarlanma direncine sahip lastikler, uzun vadede yakıt tasarrufu sağlar.</p>
         <h2>Uzman Görüşü Alın</h2>
@@ -78,7 +78,7 @@ const ARTICLES = [
         <h2>Konum ve Ulaşım Kolaylığı</h2>
         <p>Efeler merkezli bir mağaza, Aydın'ın büyük bölümüne kolay ulaşım imkanı sunar. Özellikle acil bir lastik sorunu yaşadığınızda, işyerinize veya evinize yakın bir bayiye ulaşabilmek zaman kaybını azaltır. Ancak sadece mesafeye değil, bayiin sunduğu hizmet kalitesine de bakmak gerekir.</p>
         <h2>Stok Çeşitliliği</h2>
-        <p>Aradığınız ebat veya markanın stokta bulunması, ikinci bir yere gitmenizi önler. Çok sayıda dünya markasıyla (Petlas, Lassa, Bridgestone, Goodyear, Milestone, Continental, Hankook, Kumho, Falken, Dunlop, Laufen) çalışan bir bayii, ihtiyacınız olan ebat ve modeli bulma şansınızı artırır.</p>
+        <p>Aradığınız ebat veya markanın stokta bulunması, ikinci bir yere gitmenizi önler. Çok sayıda dünya markasıyla (Petlas, Lassa, Bridgestone, Goodyear, Milestone, Continental, Hankook, Kumho, Falken, Dunlop, Laufenn) çalışan bir bayii, ihtiyacınız olan ebat ve modeli bulma şansınızı artırır.</p>
         <h2>Randevu ve Bekleme Süresi</h2>
         <p>Bazı bayiler yoğunluk nedeniyle günler sonrasına randevu verirken, bazıları aynı gün içinde işleminizi tamamlayabilir. Telefonla veya WhatsApp üzerinden hızlı iletişim kurabildiğiniz, randevu sürecinin şeffaf olduğu bir bayii tercih etmeniz, zamanınızı daha verimli kullanmanızı sağlar.</p>
         <h2>Ek Hizmetler</h2>
