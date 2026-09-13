@@ -174,7 +174,7 @@ writeFileSync(
   shell({
     slug: "markalar",
     title: "Tüm Lastik Markaları",
-    desc: "Kumral Oto Lastik Market'te satışa sunulan tüm lastik markaları: Petlas, Lassa, Bridgestone, Goodyear, Milestone, Continental, Hankook, Kumho, Falken, Dunlop, Laufen.",
+    desc: "Kumral Oto Lastik Market'te satışa sunulan tüm lastik markaları: Petlas, Lassa, Bridgestone, Goodyear, Milestone, Continental, Hankook, Kumho, Falken, Dunlop, Laufenn.",
     breadcrumb: "Markalar",
     heroTitle: "Tüm Markalarımız",
     heroDesc: "Aydın'da 11 dünya markasında yaz, kış ve 4 mevsim lastik seçenekleri sizi bekliyor.",
@@ -399,7 +399,7 @@ console.log("yazıldı: iletisim.html");
 
 /* ===================== SSS ===================== */
 const faqs = [
-  ["Hangi marka lastikleri satıyorsunuz?", "Petlas, Lassa, Bridgestone, Goodyear, Milestone, Continental, Hankook, Kumho, Falken, Dunlop ve Laufen marka lastikleri satıyoruz."],
+  ["Hangi marka lastikleri satıyorsunuz?", "Petlas, Lassa, Bridgestone, Goodyear, Milestone, Continental, Hankook, Kumho, Falken, Dunlop ve Laufenn marka lastikleri satıyoruz."],
   ["Fiyat listesi neden yok?", "Lastik fiyatları döviz kuruna ve tedarik durumuna göre sık değiştiği için güncel fiyatı telefon veya WhatsApp üzerinden anlık olarak paylaşıyoruz."],
   ["Balans ve rot ayarı lastik fiyatına dahil mi?", "Lastik montajıyla birlikte balans ayarı hizmetimizden faydalanabilirsiniz; rot ayarı ihtiyaç durumuna göre ayrıca değerlendirilir. Detaylar için bizi arayın."],
   ["Eski lastiklerimi ne yapıyorsunuz?", "Talep ederseniz eski lastiklerinizi mevzuata uygun şekilde teslim alıyoruz; isterseniz mevsimlik depolama hizmetimizden de faydalanabilirsiniz."],
